@@ -1,8 +1,8 @@
-import 'package:cart_app/home/favorite.dart';
+import 'package:cart_app/view/favorite.dart';
 import 'package:cart_app/models/productmodel.dart';
 import 'package:cart_app/provider/carttprovider.dart';
 import 'package:cart_app/provider/favourite.dart';
-import 'package:cart_app/home/productview.dart';
+import 'package:cart_app/view/productview.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -328,6 +328,7 @@ class _CarthomeeState extends State<carthomee> {
   }
 }
 
+//builddrawer function
 Widget buildDrawer() {
   return Drawer(
     child: ListView(
@@ -345,80 +346,3 @@ Widget buildDrawer() {
     ),
   );
 }
-
-// Container(
-//   decoration: BoxDecoration(
-//     borderRadius: BorderRadius.circular(15),
-//     color: const Color.fromARGB(255, 243, 243, 243), // light grey container
-//   ),
-//   padding: const EdgeInsets.all(8.0),
-//   child: Column(
-//     children: [
-//       // ---------- Carousel ----------
-//       Container(
-//         width: double.infinity,
-//         height: 190,
-//         child: CarouselSlider(
-//           options: CarouselOptions(
-//             autoPlay: true,
-//             enlargeCenterPage: true,
-//             viewportFraction: 0.85,
-//             autoPlayInterval: const Duration(seconds: 2),
-//             onPageChanged: (index, reason) {
-//               setState(() => currentindex = index);
-//             },
-//           ),
-//           items: imagelistt.map((item) {
-//             return Card(
-//               margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-//               elevation: 3,
-//               shadowColor: Colors.black,
-//               shape: RoundedRectangleBorder(
-//                 borderRadius: BorderRadius.circular(15),
-//               ),
-//               clipBehavior: Clip.antiAlias,
-//               child: Image.asset(item, fit: BoxFit.cover),
-//             );
-//           }).toList(),
-//         ),
-//       ),
-
-//       // ---------- Dots ----------
-//       Row(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: imagelistt.asMap().entries.map((entry) {
-//           return Container(
-//             width: 10,
-//             height: 10,
-//             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
-//             decoration: BoxDecoration(
-//               shape: BoxShape.circle,
-//               color: currentindex == entry.key ? Colors.black : Colors.grey,
-//             ),
-//           );
-//         }).toList(),
-//       ),
-
-//       const SizedBox(height: 20),
-
-//       // ---------- GridView inside the same container ----------
-//       GridView.builder(
-//         shrinkWrap: true, // important for embedding inside Column
-//         physics: const NeverScrollableScrollPhysics(), // disable internal scroll
-//         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//           crossAxisCount: 2,
-//           mainAxisSpacing: 12,
-//           crossAxisSpacing: 12,
-//           childAspectRatio: 3 / 4,
-//         ),
-//         itemCount: 6,
-//         itemBuilder: (context, index) {
-//           return Card(
-//             color: Colors.blue[100],
-//             child: Center(child: Text('Item $index')),
-//           );
-//         },
-//       ),
-//     ],
-//   ),
-// )

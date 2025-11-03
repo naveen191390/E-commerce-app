@@ -1,5 +1,5 @@
-import 'package:cart_app/home/bottom_nav.dart';
-import 'package:cart_app/home/home.dart';
+import 'package:cart_app/view/bottom_nav.dart';
+import 'package:cart_app/view/home.dart';
 import 'package:cart_app/provider/carttprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

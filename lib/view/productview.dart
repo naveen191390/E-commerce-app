@@ -1,4 +1,4 @@
-import 'package:cart_app/home/cart_page.dart';
+import 'package:cart_app/view/cart_page.dart';
 import 'package:cart_app/models/productmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
