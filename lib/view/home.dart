@@ -1,4 +1,3 @@
-import 'package:cart_app/view/favorite.dart';
 import 'package:cart_app/models/productmodel.dart';
 import 'package:cart_app/provider/carttprovider.dart';
 import 'package:cart_app/provider/favourite.dart';
@@ -30,70 +29,78 @@ final List<String> imagelistt = [
 //   'images/itemmss7.png',
 //   'images/itemmss8.png',
 
-final List<Productmodelllllllllllllll> itemlistt = [
-  Productmodelllllllllllllll(
+final List<Product> itemlistt = [
+  Product(
     id: 1,
-    name: "Iphone 17 Pro",
+    title: "Iphone 17 Pro",
     image: 'images/itemmsss1.png',
     price: 134900,
     description:
         "The iPhone 17 Pro combines cutting-edge technology with sleek design, delivering unmatched performance, an immersive display, and advanced camera capabilities for every moment.",
+    category: 'tfvghb',
   ),
-  Productmodelllllllllllllll(
+  Product(
     id: 2,
-    name: "Asus Rog Strix G16",
+    title: "Asus Rog Strix G16",
     image: 'images/itemmsss2.png',
     price: 179991,
     description:
         "The ASUS ROG Strix G16 combines raw power and precision engineering, featuring cutting-edge performance, dynamic cooling, and immersive visuals — crafted for those who demand victory at every frame.",
+    category: 'uyhjn ',
   ),
-  Productmodelllllllllllllll(
+  Product(
     id: 3,
-    name: "Versace Eros Flame",
+    title: "Versace Eros Flame",
     image: 'images/itemmsss3.png',
     price: 6900,
     description:
         "Versace Eros Flame is a bold fragrance that ignites the senses with fiery notes of citrus, spice, and woods — a scent for the confident man who leads with heart and strength.",
+    category: 'iujnm',
   ),
-  Productmodelllllllllllllll(
+  Product(
     id: 4,
-    name: "Skirts",
+    title: "Skirts",
     image: 'images/itemmsss4.png',
     price: 1999,
     description:
         "This chic and versatile skirt combines timeless style with modern sophistication. Designed to flatter every silhouette, it flows gracefully with every step — perfect for brunch dates, office days, or evening strolls.",
+    category: 'uyhjnm',
   ),
-  Productmodelllllllllllllll(
+  Product(
     id: 5,
-    name: 'Shirts',
+    title: 'Shirts',
     image: 'images/itemmsss5.png',
     price: 999,
     description:
         "This premium shirt blends comfort and class in perfect harmony. Tailored for a sleek fit and crafted from breathable fabric, it keeps you looking sharp from sunrise meetings to sunset hangouts.",
+    category: 'fsf',
   ),
-  Productmodelllllllllllllll(
+  Product(
     id: 6,
-    name: "boAt Airdopes 170 ANC",
+    title: "boAt Airdopes 170 ANC",
     image: 'images/itemmsss6.png',
     price: 2000,
     description:
         "Experience pure sound with boAt Airdopes 170 ANC. Featuring up to 35dB Active Noise Cancellation, crystal-clear calling, and long-lasting battery life, these earbuds deliver immersive audio wherever life takes you. Sleek design, powerful performance — music never felt this good.",
+    category: 'ssffsf',
   ),
-  Productmodelllllllllllllll(
+  Product(
     id: 7,
-    name: " Fastrack Stunners",
+    title: " Fastrack Stunners",
     image: 'images/itemmss7.png',
     price: 1647,
     description:
         "Bold, stylish, and effortlessly cool — the Fastrack Stunners collection brings attitude to your wrist. With its sleek design and striking details, it’s made for those who live fast, stand out, and never blend in.",
+    category: 'sfsfsf',
   ),
-  Productmodelllllllllllllll(
+  Product(
     id: 8,
-    name: " Nike Dunk Low",
+    title: " Nike Dunk Low",
     image: 'images/itemmsss8.png',
     price: 11895,
     description:
         "The Nike Dunk Low blends timeless basketball heritage with street-ready style. With its premium leather build, bold color blocking, and unmatched comfort, this sneaker is a statement of self-expression — whether you’re hitting the court or the city streets.",
+    category: 'sfsff',
   ),
 ];
 
@@ -103,10 +110,8 @@ class _CarthomeeState extends State<carthomee> {
   @override
   Widget build(BuildContext context) {
     final ffffffav = Provider.of<Favouriteprovider>(context);
-    final favvvv = ffffffav.favourites;
 
-    final caaaart = Provider.of<Cartprovidr>(context);
-    final carttttt = caaaart.cartsitem;
+    final caaaart = Provider.of<ProductProvider>(context);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -251,7 +256,7 @@ class _CarthomeeState extends State<carthomee> {
                                 Align(
                                   alignment: Alignment.topRight,
                                   child: Padding(
-                                    padding: const EdgeInsets.only(left: 117),
+                                    padding: const EdgeInsets.only(left: 60),
                                     child: Row(
                                       children: [
                                         IconButton(
@@ -261,11 +266,10 @@ class _CarthomeeState extends State<carthomee> {
                                             } else {
                                               caaaart.additem(productsss);
                                             }
-                                            ;
                                           },
                                           icon: caaaart.isincart(productsss)
-                                              ? Icon(Icons.done)
-                                              : Icon(
+                                              ? const Icon(Icons.done)
+                                              : const Icon(
                                                   Icons.shopping_cart_outlined,
                                                 ),
                                         ),

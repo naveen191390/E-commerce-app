@@ -1,7 +1,6 @@
 import 'package:cart_app/view/cart_page.dart';
 import 'package:cart_app/view/favorite.dart';
 import 'package:cart_app/view/home.dart';
-import 'package:cart_app/view/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 

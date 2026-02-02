@@ -1,6 +1,4 @@
-import 'package:cart_app/view/bottom_nav.dart';
-import 'package:cart_app/view/home.dart';
-import 'package:cart_app/provider/carttprovider.dart';
+import 'package:cart_app/provider/product_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,8 +13,8 @@ class appcartpage extends StatefulWidget {
 class _appcartpageState extends State<appcartpage> {
   @override
   Widget build(BuildContext context) {
-    final cartproviderrrr = Provider.of<Cartprovidr>(context);
-    final cartitemmmm = cartproviderrrr.cartsitem;
+    final cartproviderrrr = Provider.of<CartProvider>(context);
+    final cartitemmmm = cartproviderrrr.cartItems;
 
     // var prodcart = cartitemmmm[index];
     return Scaffold(
@@ -78,7 +76,7 @@ class _appcartpageState extends State<appcartpage> {
                           Padding(
                             padding: const EdgeInsets.only(top: 15),
                             child: Text(
-                              getcartitems.name,
+                              getcartitems.title,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(

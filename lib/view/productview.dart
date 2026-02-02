@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Viewpage extends StatelessWidget {
-  Productmodelllllllllllllll moodelllviw;
+  Product moodelllviw;
   Viewpage({super.key, required this.moodelllviw});
 
   @override
@@ -71,7 +71,7 @@ class Viewpage extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            moodelllviw.name,
+                            moodelllviw.title,
                             style: GoogleFonts.farro(
                               fontSize: 27,
                               color: Colors.black,

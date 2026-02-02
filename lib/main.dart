@@ -1,29 +1,28 @@
-import 'package:cart_app/view/bottom_nav.dart';
-import 'package:cart_app/view/cart_page.dart';
-import 'package:cart_app/view/favorite.dart';
-import 'package:cart_app/view/home.dart';
 import 'package:cart_app/provider/carttprovider.dart';
 import 'package:cart_app/provider/favourite.dart';
+import 'package:cart_app/provider/product_provider.dart';
+import 'package:cart_app/view/bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => Favouriteprovider()),
-        ChangeNotifierProvider(create: (context) => Cartprovidr()),
+        ChangeNotifierProvider(create: (_) => ProductProvider()),
+        ChangeNotifierProvider(create: (_) => Favouriteprovider()),
+        ChangeNotifierProvider(create: (_) => CartProvider()),
       ],
-      child: const MaterialApp(
-        home: SlidingCircleNavScreen(),
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        home: const SlidingCircleNavScreen(),
       ),
     );
   }

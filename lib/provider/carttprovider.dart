@@ -1,58 +1,46 @@
-import 'package:cart_app/models/cartmodel.dart';
 import 'package:cart_app/models/productmodel.dart';
+import 'package:cart_app/service/api_product.dart';
 import 'package:flutter/material.dart';
 
-class Cartprovidr extends ChangeNotifier {
-  final List<Cartmodel> _cartsitem = [];
+class ProductProvider extends ChangeNotifier {
+  final ApiService _apiService = ApiService();
 
-  List<Cartmodel> get cartsitem => _cartsitem;
+  List<Product> _products = [];
+  bool _isLoading = false;
 
-  double get totalamount {
-    double totel = 0;
-    for (var cartsitemsssss in _cartsitem) {
-      totel += cartsitemsssss.prdctmodll.price * cartsitemsssss.quantity;
+  List<Product> get products => _products;
+  bool get isLoading => _isLoading;
+
+  final List<Product> _cartItems = [];
+
+  List<Product> get cartItems => _cartItems;
+  void additem(Product product) {
+    if (!_cartItems.contains(product)) {
+      _cartItems.add(product);
+      notifyListeners();
     }
-    return totel;
   }
 
-  void additem(Productmodelllllllllllllll produtsss) {
-    final existingindex = _cartsitem.indexWhere(
-      (cartsitem) => cartsitem.prdctmodll.id == produtsss.id,
-    );
-    if (existingindex >= 0) {
-      _cartsitem[existingindex].quantity++;
-    } else {
-      _cartsitem.add(Cartmodel(prdctmodll: produtsss));
-    }
+  void removeitems(Product product) {
+    _cartItems.remove(product);
     notifyListeners();
   }
 
-  void removeitems(Productmodelllllllllllllll produtsss) {
-    final existingindex = _cartsitem.indexWhere(
-      (cartsitem) => cartsitem.prdctmodll.id == produtsss.id,
-    );
-    if (existingindex >= 0) {
-      if (_cartsitem[existingindex].quantity > 1)
-        _cartsitem[existingindex].quantity--;
-    } else {
-      _cartsitem.removeAt(existingindex);
+  bool isincart(Product product) {
+    return _cartItems.contains(product);
+  }
+
+  Future<void> loadProducts() async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      _products = await _apiService.fetchProducts();
+    } catch (e) {
+      debugPrint("Error: $e");
     }
-    notifyListeners();
-  }
 
-  void deleteindex(Productmodelllllllllllllll produtsss) {
-    _cartsitem.removeWhere(
-      (cartsitem) => cartsitem.prdctmodll.id == produtsss.id,
-    );
-    notifyListeners();
-  }
-
-  bool isincart(Productmodelllllllllllllll prodtss) {
-    return _cartsitem.any((cartsitem) => cartsitem.prdctmodll.id == prodtss.id);
-  }
-
-  void clear() {
-    _cartsitem.clear();
+    _isLoading = false;
     notifyListeners();
   }
 }
